@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discussions
+    url: https://github.com/orgs/SQLoot/discussions
+    about: Ask questions and discuss ideas
+  - name: 🔒 Security Issue
+    url: https://github.com/SQLoot/.github/security/policy
+    about: Report security vulnerabilities privately

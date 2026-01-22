@@ -1,12 +1,22 @@
-## Hi there 👋
+# SQLoot
 
-<!--
+Open-source infrastructure for intelligent data management.
 
-**Here are some ideas to get you started:**
+> 🚧 **Coming Soon** - Repositories are currently private during development.
 
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+## Projects
+
+- **evolu-plan-b** - Local-first sync engine
+- **cloud-as-relay** - Lightweight relay infrastructure
+
+## Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## Security
+
+Found a vulnerability? See [SECURITY.md](SECURITY.md) for responsible disclosure.
+
+## License
+
+MIT
