@@ -1,0 +1,9 @@
+{
+    "name": "SQLoot Release",
+    "description": "Release workflow triggered by version tags",
+    "iconName": "octicon package",
+    "categories": [
+        "Bun",
+        "Release"
+    ]
+}
