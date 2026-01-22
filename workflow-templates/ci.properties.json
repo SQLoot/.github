@@ -1,0 +1,9 @@
+{
+    "name": "SQLoot CI",
+    "description": "Standard CI workflow with Bun, Biome, TypeScript, and tests",
+    "iconName": "octicon check-circle",
+    "categories": [
+        "Bun",
+        "TypeScript"
+    ]
+}

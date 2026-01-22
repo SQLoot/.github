@@ -1,0 +1,8 @@
+{
+    "name": "SQLoot Security",
+    "description": "Security scan with dependency audit and secret detection",
+    "iconName": "octicon shield-check",
+    "categories": [
+        "Security"
+    ]
+}
