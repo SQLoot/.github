@@ -1,35 +1,35 @@
-# GitHub Actions Workflow Best Practices
+# Osvědčené postupy pro GitHub Actions Workflow
 
-This document outlines best practices for creating and maintaining GitHub Actions workflows in SQLoot repositories.
+Tento dokument popisuje osvědčené postupy pro vytváření a údržbu GitHub Actions workflows v repozitářích SQLoot.
 
-## General Principles
+## Obecné principy
 
-### Security First
-- ✅ Use pinned action versions with SHA hashes for production
-- ✅ Limit workflow permissions to minimum required
-- ✅ Never log secrets or sensitive data
-- ✅ Use GitHub's built-in secrets management
-- ✅ Enable dependency review for workflows
+### Bezpečnost na prvním místě
+- ✅ Používejte připnuté verze akcí s SHA hashy pro produkci
+- ✅ Omezte oprávnění workflow na minimum
+- ✅ Nikdy nelogujte secrets nebo citlivá data
+- ✅ Používejte vestavěnou správu secrets v GitHubu
+- ✅ Povolte kontrolu závislostí pro workflows
 
-### Performance
-- ✅ Cache dependencies appropriately
-- ✅ Use concurrent jobs when possible
-- ✅ Optimize checkout depth (shallow clones)
-- ✅ Cancel redundant workflow runs
-- ✅ Use matrix strategies for parallel testing
+### Výkon
+- ✅ Vhodně cachujte závislosti
+- ✅ Používejte souběžné joby, když je to možné
+- ✅ Optimalizujte hloubku checkoutu (shallow clones)
+- ✅ Rušte nadbytečné běhy workflow
+- ✅ Používejte matrix strategie pro paralelní testování
 
-### Maintainability
-- ✅ Use reusable workflows for common tasks
-- ✅ Keep workflows DRY (Don't Repeat Yourself)
-- ✅ Document complex workflows
-- ✅ Use consistent naming conventions
-- ✅ Regularly update action versions
+### Udržovatelnost
+- ✅ Používejte opakovaně použitelné workflows pro běžné úkoly
+- ✅ Udržujte workflows DRY (Don't Repeat Yourself)
+- ✅ Dokumentujte složité workflows
+- ✅ Používejte konzistentní konvence pojmenování
+- ✅ Pravidelně aktualizujte verze akcí
 
-## Workflow Template Guidelines
+## Pokyny pro šablony Workflow
 
 ### CI Workflow
 
-**Triggers:**
+**Spouštěče:**
 ```yaml
 on:
   push:
@@ -38,15 +38,15 @@ on:
     branches: [main]
 ```
 
-**Required Jobs:**
-- Linting and formatting
-- Type checking (for TypeScript)
-- Unit tests
-- Integration tests (if applicable)
+**Povinné joby:**
+- Linting a formátování
+- Kontrola typů (pro TypeScript)
+- Unit testy
+- Integrační testy (pokud je to aplikovatelné)
 
-**Optimizations:**
+**Optimalizace:**
 ```yaml
-# Cancel in-progress runs for PRs
+# Zrušit probíhající běhy pro PRs
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
@@ -54,7 +54,7 @@ concurrency:
 
 ### Security Workflow
 
-**Triggers:**
+**Spouštěče:**
 ```yaml
 on:
   push:
@@ -62,16 +62,16 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '0 0 * * 0'  # Weekly on Sunday
+    - cron: '0 0 * * 0'  # Týdně v neděli
 ```
 
-**Required Checks:**
-- Dependency auditing
-- Secret scanning
+**Povinné kontroly:**
+- Audit závislostí
+- Skenování secrets
 - SAST (Static Application Security Testing)
-- License compliance
+- Kontrola licencí
 
-**Permissions:**
+**Oprávnění:**
 ```yaml
 permissions:
   security-events: write
@@ -80,7 +80,7 @@ permissions:
 
 ### Release Workflow
 
-**Triggers:**
+**Spouštěče:**
 ```yaml
 on:
   push:
@@ -88,85 +88,85 @@ on:
       - 'v*'
 ```
 
-**Best Practices:**
-- Automated changelog generation
-- Semantic versioning
-- Asset signing
-- Docker image publishing (if applicable)
-- NPM package publishing (if applicable)
+**Osvědčené postupy:**
+- Automatické generování changelogu
+- Sémantické verzování
+- Podepisování assetů
+- Publikování Docker image (pokud je to aplikovatelné)
+- Publikování NPM balíčků (pokud je to aplikovatelné)
 
-## Action Version Pinning
+## Připnutí verzí akcí
 
-### Development
+### Vývoj
 ```yaml
-# OK for templates and examples
+# OK pro šablony a příklady
 - uses: actions/checkout@v4
 ```
 
-### Production
+### Produkce
 ```yaml
-# Recommended: Pin to SHA with version comment
+# Doporučeno: Připnout na SHA s komentářem verze
 - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
 ```
 
-**Why:** 
-- Prevents supply chain attacks
-- Ensures reproducible builds
-- Protects against malicious updates
+**Proč:** 
+- Zabraňuje útokům na dodavatelský řetězec
+- Zajišťuje reprodukovatelné buildy
+- Chrání před škodlivými aktualizacemi
 
-## Permissions Model
+## Model oprávnění
 
-### Principle of Least Privilege
+### Princip nejmenších privilegií
 
-**Default (read-only):**
+**Výchozí (pouze pro čtení):**
 ```yaml
 permissions:
   contents: read
 ```
 
-**Specific grants only when needed:**
+**Specifická oprávnění pouze v případě potřeby:**
 ```yaml
 permissions:
-  contents: write      # For releases, commits
-  pull-requests: write # For PR comments
-  issues: write        # For issue comments
-  security-events: write # For CodeQL
+  contents: write      # Pro releases, commity
+  pull-requests: write # Pro PR komentáře
+  issues: write        # Pro issue komentáře
+  security-events: write # Pro CodeQL
 ```
 
-**Never use:**
+**Nikdy nepoužívejte:**
 ```yaml
-permissions: write-all  # ❌ Too permissive
+permissions: write-all  # ❌ Příliš permisivní
 ```
 
-## Secrets Management
+## Správa Secrets
 
-### Do's
-✅ Use GitHub secrets for sensitive data
-✅ Use environment-specific secrets
-✅ Rotate secrets regularly
-✅ Use OIDC for cloud provider auth (AWS, Azure, GCP)
-✅ Mask secrets in logs automatically
+### Co dělat
+✅ Používejte GitHub secrets pro citlivá data
+✅ Používejte secrets specifické pro prostředí
+✅ Pravidelně obměňujte secrets
+✅ Používejte OIDC pro autentizaci s cloud providery (AWS, Azure, GCP)
+✅ Automaticky maskujte secrets v logách
 
-### Don'ts
-❌ Never echo secrets in workflow logs
-❌ Don't use secrets in PR builds from forks
-❌ Don't store secrets in code or config files
-❌ Don't use weak encryption
+### Co nedělat
+❌ Nikdy neechujte secrets do logů workflow
+❌ Nepoužívejte secrets v PR buildech z forků
+❌ Neukládejte secrets do kódu nebo konfiguračních souborů
+❌ Nepoužívejte slabé šifrování
 
-### Example
+### Příklad
 ```yaml
 steps:
   - name: Deploy
     env:
       API_KEY: ${{ secrets.API_KEY }}
     run: |
-      # API_KEY is automatically masked in logs
+      # API_KEY je automaticky maskován v logách
       ./deploy.sh
 ```
 
-## Caching Strategy
+## Strategie cachování
 
-### Bun/Node.js Dependencies
+### Bun/Node.js závislosti
 ```yaml
 - name: Setup Bun
   uses: oven-sh/setup-bun@v2
@@ -182,7 +182,7 @@ steps:
       ${{ runner.os }}-bun-
 ```
 
-### Build Artifacts
+### Build artefakty
 ```yaml
 - name: Cache build
   uses: actions/cache@v4
@@ -193,16 +193,16 @@ steps:
     key: ${{ runner.os }}-build-${{ hashFiles('src/**') }}
 ```
 
-## Matrix Testing
+## Testování s Matrix
 
-### Multi-platform Testing
+### Multi-platformní testování
 ```yaml
 strategy:
   matrix:
     os: [ubuntu-latest, windows-latest, macos-latest]
     node-version: [18, 20, 21]
     exclude:
-      # Exclude specific combinations if needed
+      # Vyloučit specifické kombinace v případě potřeby
       - os: windows-latest
         node-version: 18
 ```
@@ -210,28 +210,28 @@ strategy:
 ### Fail-fast vs Continue on Error
 ```yaml
 strategy:
-  fail-fast: false  # Continue running other jobs if one fails
+  fail-fast: false  # Pokračovat v běhu ostatních jobů i když jeden selže
   matrix:
     # ...
 ```
 
-## Environment Protection
+## Ochrana prostředí
 
-### Production Deployments
+### Produkční nasazení
 ```yaml
 environment:
   name: production
   url: https://example.com
 ```
 
-**Configure in GitHub:**
-- Required reviewers
-- Wait timer
-- Deployment branches (main only)
+**Konfigurace na GitHubu:**
+- Požadovaní revieweři
+- Časovač čekání
+- Deployment větve (pouze main)
 
-## Workflow Reusability
+## Opětovná použitelnost Workflow
 
-### Reusable Workflow
+### Opakovaně použitelný Workflow
 ```yaml
 # .github/workflows/reusable-test.yml
 on:
@@ -253,7 +253,7 @@ jobs:
       - run: npm test
 ```
 
-### Calling Reusable Workflow
+### Volání opakovaně použitelného Workflow
 ```yaml
 # .github/workflows/ci.yml
 jobs:
@@ -263,7 +263,7 @@ jobs:
       node-version: '20'
 ```
 
-## Error Handling
+## Zpracování chyb
 
 ### Continue on Error
 ```yaml
@@ -272,82 +272,82 @@ jobs:
   run: npm run optional-check
 ```
 
-### Conditional Steps
+### Podmíněné kroky
 ```yaml
 - name: Deploy
   if: github.ref == 'refs/heads/main' && success()
   run: ./deploy.sh
 ```
 
-## Monitoring and Notifications
+## Monitorování a notifikace
 
-### Status Badges
+### Status odznaky
 ```markdown
 ![CI](https://github.com/SQLoot/repo/workflows/CI/badge.svg)
 ```
 
-### Notifications
-- Use GitHub's built-in notifications
-- Consider Slack/Discord webhooks for critical failures
-- Set up email alerts for security issues
+### Notifikace
+- Používejte vestavěné notifikace GitHubu
+- Zvažte Slack/Discord webhooky pro kritická selhání
+- Nastavte emailové upozornění pro bezpečnostní problémy
 
-## Common Pitfalls
+## Časté úskalí
 
-### ❌ Don't
+### ❌ Nedělat
 ```yaml
-# Hardcoded secrets
+# Hardcodované secrets
 env:
   API_KEY: "sk_live_12345..."
 
-# Too permissive
+# Příliš permisivní
 permissions: write-all
 
-# No version pinning
+# Žádné připnutí verze
 - uses: actions/checkout@latest
 
-# Unsafe script injection
+# Nebezpečná injekce skriptu
 run: echo "${{ github.event.issue.title }}"
 ```
 
-### ✅ Do
+### ✅ Dělat
 ```yaml
-# Use GitHub secrets
+# Používejte GitHub secrets
 env:
   API_KEY: ${{ secrets.API_KEY }}
 
-# Minimal permissions
+# Minimální oprávnění
 permissions:
   contents: read
 
-# Pinned versions
+# Připnuté verze
 - uses: actions/checkout@v4
 
-# Safe variable usage
+# Bezpečné používání proměnných
 run: |
   TITLE="${{ github.event.issue.title }}"
   echo "${TITLE}"
 ```
 
-## Debugging Workflows
+## Ladění Workflows
 
-### Enable Debug Logging
-Set repository secrets:
+### Povolit Debug logování
+Nastavte repository secrets:
 - `ACTIONS_STEP_DEBUG`: `true`
 - `ACTIONS_RUNNER_DEBUG`: `true`
 
-### Local Testing
-Use [act](https://github.com/nektos/act) to test workflows locally:
+### Lokální testování
+Použijte [act](https://github.com/nektos/act) pro lokální testování workflows:
 ```bash
-act -j test  # Run the 'test' job
+act -j test  # Spustit 'test' job
 ```
 
-## Performance Optimization
+## Optimalizace výkonu
 
 ### Shallow Clones
 ```yaml
 - uses: actions/checkout@v4
   with:
-    fetch-depth: 1  # Only fetch the latest commit
+    fetch-depth: 1  # Stáhnout pouze nejnovější commit
 ```
 
 ### Sparse Checkout
@@ -359,48 +359,48 @@ act -j test  # Run the 'test' job
       tests/
 ```
 
-### Job Artifacts
+### Job artefakty
 ```yaml
 - name: Upload artifact
   uses: actions/upload-artifact@v4
   with:
     name: build-output
     path: dist/
-    retention-days: 7  # Clean up after 7 days
+    retention-days: 7  # Vyčistit po 7 dnech
 ```
 
-## Compliance and Auditing
+## Compliance a Auditování
 
-### Audit Logs
-- Review workflow runs regularly
-- Monitor for unusual patterns
-- Check for unauthorized access
+### Audit logy
+- Pravidelně kontrolujte běhy workflow
+- Monitorujte neobvyklé vzory
+- Kontrolujte neoprávněný přístup
 
-### Required Status Checks
-Configure in branch protection:
-- All tests must pass
-- Security scans must pass
-- No high/critical vulnerabilities
+### Požadované kontroly stavu
+Konfigurace v ochraně větví:
+- Všechny testy musí projít
+- Bezpečnostní skeny musí projít
+- Žádné high/critical zranitelnosti
 
-## Template Quality Checklist
+## Kontrolní seznam kvality šablony
 
-- [ ] Clear, descriptive workflow name
-- [ ] Appropriate triggers configured
-- [ ] Minimal permissions granted
-- [ ] Dependencies cached
-- [ ] Versions pinned (for production)
-- [ ] Secrets handled securely
-- [ ] Error handling implemented
-- [ ] Documentation included
-- [ ] Tested in isolation
-- [ ] Follows SQLoot conventions
+- [ ] Jasný, popisný název workflow
+- [ ] Správně nakonfigurované spouštěče
+- [ ] Minimální oprávnění udělena
+- [ ] Závislosti cachovány
+- [ ] Verze připnuty (pro produkci)
+- [ ] Secrets bezpečně zpracovány
+- [ ] Implementováno zpracování chyb
+- [ ] Zahrnuta dokumentace
+- [ ] Testováno izolovaně
+- [ ] Dodržuje konvence SQLoot
 
-## Resources
+## Zdroje
 
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [GitHub Actions Security Best Practices](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions)
+- [GitHub Actions dokumentace](https://docs.github.com/en/actions)
+- [GitHub Actions bezpečnostní osvědčené postupy](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions)
 - [Awesome Actions](https://github.com/sdras/awesome-actions)
 
 ---
 
-**Note**: Keep workflows simple, secure, and maintainable. Regular reviews and updates are essential.
+**Poznámka**: Udržujte workflows jednoduché, bezpečné a udržovatelné. Pravidelné revize a aktualizace jsou nezbytné.
