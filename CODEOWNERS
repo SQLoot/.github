@@ -1,0 +1,4 @@
+# CODEOWNERS - SQLoot organization health files
+# All changes to org-level configs require owner approval
+
+* @miccy

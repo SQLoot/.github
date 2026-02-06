@@ -1,5 +1,5 @@
 # .github
-Special Github repo for organization health files  ✨
+Special GitHub repo for organization health files  ✨
 
 ---
 

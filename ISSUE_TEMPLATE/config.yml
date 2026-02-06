@@ -4,5 +4,5 @@ contact_links:
     url: https://github.com/orgs/SQLoot/discussions
     about: Ask questions and discuss ideas
   - name: 🔒 Security Issue
-    url: https://github.com/SQLoot/.github/security/policy
+    url: https://github.com/SQLoot/.github/blob/main/SECURITY.md
     about: Report security vulnerabilities privately
