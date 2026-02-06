@@ -6,11 +6,11 @@ Open-source infrastructure for intelligent data management.
 
 ## Contributing
 
-We welcome contributions! See [CONTRIBUTING](../CONTRIBUTING.md) for guidelines.
+We welcome contributions! See [CONTRIBUTING](https://github.com/SQLoot/.github/blob/main/CONTRIBUTING.md) for guidelines.
 
 ## Security
 
-Found a vulnerability? See [SECURITY](../SECURITY.md) for responsible disclosure.
+Found a vulnerability? See [SECURITY](https://github.com/SQLoot/.github/blob/main/SECURITY.md) for responsible disclosure.
 
 ---
 

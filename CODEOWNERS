@@ -1,0 +1,12 @@
+# Default owners for everything in the repository
+* @miccy
+
+# Workflow templates and GitHub Actions
+/.github/ @miccy
+/workflow-templates/ @miccy
+
+# Security policy
+/SECURITY.md @miccy
+
+# Documentation
+*.md @miccy
