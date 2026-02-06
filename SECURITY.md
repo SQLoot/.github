@@ -50,3 +50,10 @@ When contributing to SQLoot projects:
 
 For automated security tools, we follow [RFC 9116](https://www.rfc-editor.org/rfc/rfc9116.html).
 See `/.well-known/security.txt` in production deployments.
+
+---
+
+<div align="center">
+  <a href="https://github.com/enterprises/ownCTRL"><img src="https://img.shields.io/badge/©️_2026-ownCTRL™-333?style=flat&labelColor=ddd" alt="© 2026 ownCTRL™"/></a>
+  <a href="https://github.com/miccy"><img src="https://img.shields.io/badge/⚙️_Maintained_with_🩶_by-%40miccy-333?style=flat&labelColor=ddd" alt="Maintained by @miccy"/></a>
+</div>
