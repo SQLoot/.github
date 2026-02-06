@@ -18,7 +18,7 @@ This document summarizes the review of the SQLoot/.github repository and provide
 ## 🔧 Issues Fixed
 
 ### Critical Issues
-1. **Missing CODEOWNERS** ✅ Added with @miccy as default owner
+1. **Missing CODEOWNERS** ✅ Added with @ownctrl as default owner
 2. **Missing LICENSE** ✅ Added MIT license
 3. **Missing .gitignore** ✅ Added comprehensive .gitignore
 

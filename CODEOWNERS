@@ -1,12 +1,12 @@
 # Default owners for everything in the repository
-* @miccy
+* @ownctrl
 
 # Workflow templates and GitHub Actions
-/.github/ @miccy
-/workflow-templates/ @miccy
+/.github/ @ownctrl
+/workflow-templates/ @ownctrl
 
 # Security policy
-/SECURITY.md @miccy
+/SECURITY.md @ownctrl
 
 # Documentation
-*.md @miccy
+*.md @ownctrl

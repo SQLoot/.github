@@ -121,5 +121,5 @@ Need help? Check out our [Support Resources](SUPPORT.md):
 
 <div align="center">
   <a href="https://github.com/enterprises/ownCTRL"><img src="https://img.shields.io/badge/©️_2026-ownCTRL™-333?style=flat&labelColor=ddd" alt="© 2026 ownCTRL™"/></a>
-  <a href="https://github.com/miccy"><img src="https://img.shields.io/badge/⚙️_Maintained_with_🩶_by-%40miccy-333?style=flat&labelColor=ddd" alt="Maintained by @miccy"/></a>
+  <a href="https://github.com/ownctrl"><img src="https://img.shields.io/badge/⚙️_Maintained_with_🩶_by-%40ownctrl-333?style=flat&labelColor=ddd" alt="Maintained by @ownctrl"/></a>
 </div>
