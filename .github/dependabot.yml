@@ -24,7 +24,7 @@ updates:
       - "dependencies"
     # Group minor and patch updates together
     groups:
-      dev-dependencies:
+      all-minor-patch:
         patterns:
           - "*"
         update-types:

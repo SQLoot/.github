@@ -7,7 +7,7 @@ We take security seriously. If you discover a security vulnerability, please rep
 ### How to Report
 
 1. **DO NOT** create a public GitHub issue
-2. **Preferred**: Use [GitHub's private vulnerability reporting](https://github.com/SQLoot/.github/security/advisories/new)
+2. **Preferred**: Use [GitHub's private vulnerability reporting](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability) on the affected repository's Security tab
 3. **Alternative**: Email: security@sqloot.dev
 4. Include:
    - Description of the vulnerability

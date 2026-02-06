@@ -8,10 +8,10 @@ on:
   schedule:
     - cron: '0 0 * * 0' # Weekly on Sunday
 
-# Cancel in-progress runs for the same workflow
+# Cancel in-progress runs (only for PRs, not scheduled scans)
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   security:
